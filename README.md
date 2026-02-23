@@ -1,39 +1,41 @@
-# Gilded Rose starting position in Python
+# Especificaciones de la Rosa Dorada (Gilded Rose)
 
-For exercise instructions see [top level README](../README.md)
+Bienvenido al equipo **Gilded Rose**.
+Como sabrás, somos una pequeña posada ubicada estratégicamente en una prestigiosa ciudad, atendida por la amable Allison. También compramos y vendemos mercadería de alta calidad. Por desgracia, nuestra mercadería va bajando de calidad (`Quality`) a medida que se aproxima la fecha de venta.
 
-Suggestion: create a python virtual environment for this project. See the [documentation](https://docs.python.org/3/library/venv.html)
+Tenemos un sistema instalado que actualiza automáticamente nuestro inventario. Este sistema fue desarrollado por un tipo serio y práctico llamado Leeroy, que ahora se encuentra en otras aventuras.
 
-## Run the unit tests from the Command-Line
+Tu tarea es añadir una nueva funcionalidad al sistema para que podamos comenzar a vender una nueva categoría de items. Pero primero, vamos a describir como funciona el sistema:
 
-```
-python -m unittest
-```
+## Descripción del sistema
 
-## Run the TextTest fixture from the Command-Line
+- Todos los artículos (`item`) tienen una propiedad `SellIn` que denota el número de días que tenemos para venderlo
+- Todos los artículos (`item`) tienen una propiedad `Quality` que denota cúan valioso es el artículo
+- Al final de cada día, nuestro sistema decrementa ambos valores para cada artículo mediante el método `updateQuality`
 
-For e.g. 10 days:
+Bastante simple, ¿no? Bueno, ahora es donde se pone interesante:
 
-```
-python texttest_fixture.py 10
-```
+- Una vez que ha pasado la fecha recomendada de venta (`SellIn`), la calidad (`Quality`) se degrada al doble de velocidad
+- La `calidad` de un artículo nunca es negativa
+- El "Queso Brie envejecido" (`Aged brie`) incrementa su calidad (`Quality`) a medida que madura con los días
+  - Su calidad (`Quality`) aumenta en `1` unidad cada día
+  - Una vez expirada la fecha de venta (`SellIn`) su calidad (`Quality`) aumenta el doble día
+- La calidad de un artículo (`Quality`) no puede superar `50`
+- El artículo `Sulfuras`, es un artículo legendario, no necesitamos venderlo en ninguna fecha (`SellIn`) y tampoco se degrada en (`Quality`)
+- El artículo "Entrada al Backstage" (`Backstage passes`), incrementa su valor (`Quality`) a medida que acerca la fecha del concierto (`SellIn`)
+  - Si faltan `10` días o menos para el concierto, la calidad (`Quality`) se incrementa en `2` unidades
+  - Si faltan `5` días o menos, la calidad (`Quality`) se incrementa en `3` unidades
+  - Una vez pasada fecha del concierto (`SellIn`), la entrada pierde su valor (`Quality`) y cae a `0`
 
-You should make sure the command shown above works when you execute it in a terminal before trying to use TextTest (see below).
+## Tu tarea
 
+Hace poco contratamos a un proveedor de artículos _conjurados mágicamente_.
+Esto requiere una actualización del sistema:
 
-## Run the TextTest approval test that comes with this project
+- Los artículos conjurados (`Conjured`) degradan su calidad (`Quality`) el doble de rápido que los artículos normales
 
-There are instructions in the [TextTest Readme](../texttests/README.md) for setting up TextTest. You will need to specify the Python executable and interpreter in [config.gr](../texttests/config.gr). Uncomment these lines:
+Siéntete libre de modificar el método `updateQuality` y agregar el código que sea necesario, siempre y cuando todo siga funcionando correctamente. Sin embargo, **no debes modificar la clase `Item` ni sus propiedades**, ya que esta pertenece a un duende que en un ataque de ira te liquidaría de un golpe ya que no cree en la cultura de código compartido.
 
-    executable:${TEXTTEST_HOME}/python/texttest_fixture.py
-    interpreter:python
+## Notas finales
 
-## Run the ApprovalTests.Python test
-
-This test uses the framework [ApprovalTests.Python](https://github.com/approvals/ApprovalTests.Python). You will need to install  Run it like this:
-
-```
-python tests/test_gilded_rose_approvals.py
-```
-
-You will need to approve the output file which appears under "approved_files" by renaming it from xxx.received.txt to xxx.approved.txt.
+Para aclarar: un artículo nunca puede tener una calidad (`Quality`) superior a `50`, sin embargo los objetos `Sulfuras`, siendo un artículo legendario, poseen una calidad inmutable de `80`.
