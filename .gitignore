@@ -16,3 +16,4 @@ doc/
 .coverage
 
 __init__.py
+.approval_tests_temp

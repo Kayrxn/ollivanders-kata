@@ -3,7 +3,7 @@
 Tests parametrizados para Sulfuras (item legendario)
 """
 import pytest
-from gilded_rose import Item, GildedRose
+from src.gilded_rose import Item, GildedRose
 
 
 @pytest.mark.sulfuras

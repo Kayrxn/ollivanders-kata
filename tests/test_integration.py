@@ -3,7 +3,7 @@
 Tests de integración para múltiples tipos de items
 """
 import pytest
-from gilded_rose import Item, GildedRose
+from src.gilded_rose import Item, GildedRose
 
 
 @pytest.mark.integration

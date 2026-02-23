@@ -3,7 +3,7 @@
 Fixtures y configuración compartida para tests de Gilded Rose
 """
 import pytest
-from gilded_rose import Item, GildedRose
+from src.gilded_rose import Item, GildedRose
 
 
 @pytest.fixture

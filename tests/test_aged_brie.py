@@ -3,7 +3,7 @@
 Tests parametrizados para Aged Brie
 """
 import pytest
-from gilded_rose import Item, GildedRose
+from src.gilded_rose import Item, GildedRose
 
 
 @pytest.mark.aged_brie
