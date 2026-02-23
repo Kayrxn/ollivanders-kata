@@ -14,3 +14,5 @@ doc/
 
 # Coverage
 .coverage
+
+__init__.py
