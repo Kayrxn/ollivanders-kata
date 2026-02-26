@@ -9,9 +9,9 @@ from src.gilded_rose import GildedRose, Item
 def print_inventory(items, day):
     """Prints the current state of the inventory"""
     print(f"\n{'='*80}")
-    print(f"Día {day}")
+    print(f"Dia {day}")
     print(f"{'='*80}")
-    print(f"{'Artículo':<50} {'Caducidad':>12} {'Calidad':>10}")
+    print(f"{'Articulo':<50} {'Caducidad':>12} {'Calidad':>10}")
     print(f"{'-'*80}")
     
     for item in items:
@@ -21,7 +21,7 @@ def print_inventory(items, day):
 def main():
     """Main execution function"""
     
-    # Crear inventario con diferentes tipos de artículos
+    # Crear inventario con diferentes tipos de articulos
     items = [
         Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
         Item(name="Aged Brie", sell_in=2, quality=0),
